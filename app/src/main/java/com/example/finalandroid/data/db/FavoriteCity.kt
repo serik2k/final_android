@@ -1,9 +1,8 @@
 package com.example.finalandroid.data.db
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity(tableName = "favorite_cities")
-data class FavoriteCity(
-    @PrimaryKey val name: String
-)
+@Database(entities = [FavoriteCity::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun cityDao(): CityDao
+}

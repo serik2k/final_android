@@ -7,9 +7,9 @@ import com.example.finalandroid.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.nav_graph)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.myCityFragment) as NavHostFragment
         setupActionBarWithNavController(navHostFragment.navController)
     }
 }

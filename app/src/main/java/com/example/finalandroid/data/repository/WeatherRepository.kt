@@ -1,7 +1,8 @@
 package com.example.finalandroid.data.repository
 
-import com.example.weatherapp.data.api.WeatherApi
-import com.example.weatherapp.data.db.CityDao
+import com.example.finalandroid.data.db.FavoriteCity
+import com.example.finalandroid.data.api.WeatherApi
+import com.example.finalandroid.data.db.CityDao
 
 class WeatherRepository(
     private val api: WeatherApi,

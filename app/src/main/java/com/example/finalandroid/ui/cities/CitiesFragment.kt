@@ -1,4 +1,4 @@
-package com.example.finalandroid.ui.cities
+package com.example.weatherapp.ui.cities
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+
+import com.example.finalandroid.adapter.CitiesAdapter
 import com.example.finalandroid.databinding.FragmentCitiesBinding
+import com.example.finalandroid.data.api.WeatherResponse
+import com.example.finalandroid.ui.cities.CitiesAdapter
+import com.example.finalandroid.ui.cities.CitiesViewModel
 
 class CitiesFragment : Fragment() {
     private var _binding: FragmentCitiesBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: CitiesViewModel
+    private lateinit var adapter: CitiesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,11 +33,12 @@ class CitiesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(CitiesViewModel::class.java)
+        adapter = CitiesAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
 
-        // Example: Load weather for a city
         viewModel.getWeatherForCity("London", "YOUR_API_KEY_HERE").observe(viewLifecycleOwner) { weather ->
-            // Update RecyclerView with weather data
+            adapter.submitList(listOf(weather))
         }
     }
 

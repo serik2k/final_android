@@ -1,8 +1,14 @@
+import com.android.build.gradle.internal.utils.isKotlinKaptPluginApplied
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+
+
 }
+
 
 android {
     namespace = "com.example.finalandroid"
@@ -37,6 +43,9 @@ android {
     buildFeatures {
         compose = true
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -56,8 +65,9 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-
+    implementation(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    ksp(libs.room.compiler)
 }
