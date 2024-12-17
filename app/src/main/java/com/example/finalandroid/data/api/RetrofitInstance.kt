@@ -1,15 +1,16 @@
 package com.example.finalandroid.data.api
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
 object RetrofitInstance {
-    private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
+    private const val BASE_URL = "https://api.open-meteo.com/"
 
     val api: WeatherApi by lazy {
-        Retrofit.Builder()
+        retrofit2.Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
             .build()
             .create(WeatherApi::class.java)
     }
