@@ -32,9 +32,10 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
     class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(weather: WeatherResponse) {
             itemView.findViewById<TextView>(R.id.temperature).text = "Temp: ${weather.current.temperature}°C"
-            itemView.findViewById<TextView>(R.id.windSpeed).text = "Wind: ${weather.current.windSpeed} km/h"
-            itemView.findViewById<TextView>(R.id.isDay).text =
-                if (weather.current.isDay == 1) "Daytime" else "Nighttime"
+            itemView.findViewById<TextView>(R.id.myCityTitle).text = weather
+//            itemView.findViewById<TextView>(R.id.windSpeed).text = "Wind: ${weather.current.windSpeed} km/h"
+//            itemView.findViewById<TextView>(R.id.isDay).text =
+//                if (weather.current.isDay == 1) "Daytime" else "Nighttime"
         }
     }
 }

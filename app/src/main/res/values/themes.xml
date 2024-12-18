@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.FinalAndroid" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.FinalAndroid" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Add customizations here -->
+    </style>
+
 </resources>
