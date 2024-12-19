@@ -12,11 +12,11 @@
 
     <fragment
         android:id="@+id/myCityFragment"
-        android:name="com.example.weatherapp.ui.mycity.MyCityFragment"
+        android:name="com.example.finalandroid.ui.mycity.MyCityFragment"
         tools:layout="@layout/fragment_my_city" />
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.weatherapp.ui.settings.SettingsFragment"
+        android:name="com.example.finalandroid.ui.settings.SettingsFragment"
         tools:layout="@layout/fragment_settings" />
 </navigation>

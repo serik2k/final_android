@@ -1,5 +1,7 @@
 package com.example.finalandroid.data.api
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse(
@@ -17,3 +19,13 @@ data class CurrentWeather(
 data class HourlyWeather(
     @SerializedName("temperature_2m") val temperatureList: List<Double>
 )
+
+@Entity
+data class CityWeather(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val cityName: String,
+    val temperature: String,
+    val latitude: Double,
+    val longitude: Double
+)
+
