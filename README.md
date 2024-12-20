@@ -77,12 +77,14 @@ Here is the list of the implementations:
 
    
 ![photo_2024-12-20_22-17-59](https://github.com/user-attachments/assets/f2fab218-e4aa-43d0-b46c-0cbcb8762474)
+
+
 2) The chosen city to follow
 
 
 ![photo_2024-12-20_22-18-01](https://github.com/user-attachments/assets/53ab73b6-9a71-4099-8385-da202b9ace9f)
 
-4) The settings, where we can choose the city
+3) The settings, where we can choose the city
 
 
 
