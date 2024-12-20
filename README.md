@@ -49,7 +49,6 @@ Here is the list of the implementations:
     
     implementation(libs.room.ktx)
     
-    
     implementation(libs.androidx.navigation.fragment.ktx)
     
     implementation(libs.androidx.navigation.ui.ktx)
