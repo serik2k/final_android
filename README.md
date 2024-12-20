@@ -24,29 +24,52 @@ The information that we actually took:
 ----------------------------------------------------------------------------------------------------------
 Here is the list of the implementations: 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.retrofit)
-    implementation(libs.gson.converter)
-    implementation(libs.glide)
-    implementation(libs.okhttp)
-    implementation(libs.logging)
-    implementation(libs.lifecycle.viewmodel)
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.ui.graphics.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.material3.android)
-    annotationProcessor(libs.room.compiler)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    ksp(libs.room.compiler)
     
+    implementation(libs.androidx.appcompat)
+    
+    implementation(libs.material)
+    
+    implementation(libs.androidx.activity)
+    
+    implementation(libs.androidx.constraintlayout)
+    
+    implementation(libs.retrofit)
+    
+    implementation(libs.gson.converter)
+    
+    implementation(libs.glide)
+    
+    implementation(libs.okhttp)
+    
+    implementation(libs.logging)
+    
+    implementation(libs.lifecycle.viewmodel)
+    
+    implementation(libs.room.runtime)
+    
+    implementation(libs.room.ktx)
+    
+    
+    implementation(libs.androidx.navigation.fragment.ktx)
+    
+    implementation(libs.androidx.navigation.ui.ktx)
+    
+    implementation(libs.androidx.ui.graphics.android)
+    
+    implementation(libs.androidx.foundation.android)
+    
+    implementation(libs.androidx.material3.android)
+    
+    annotationProcessor(libs.room.compiler)
+    
+    testImplementation(libs.junit)
+    
+    androidTestImplementation(libs.androidx.junit)
+    
+    androidTestImplementation(libs.androidx.espresso.core)
+    
+    ksp(libs.room.compiler)
+
 ----------------------------------------------------------------------------------------------------------
 
 1) tThe list of cities
