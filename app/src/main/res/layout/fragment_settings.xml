@@ -46,11 +46,22 @@
     <!-- City Selector Spinner -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:background="@color/grey"
         android:elevation="4dp"
-        android:padding="12dp">
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select City"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:layout_gravity="center|top"
+            android:layout_marginBottom="8dp" />
         <Spinner
+            android:layout_marginTop="32dp"
             android:id="@+id/citySpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
