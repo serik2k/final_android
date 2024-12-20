@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.finalandroid.R
@@ -22,19 +23,24 @@ class MyCityFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_my_city, container, false)
 
-        val temperature = view.findViewById<TextView>(R.id.temperature)
-        val windSpeed = view.findViewById<TextView>(R.id.windSpeed)
-        val isDay = view.findViewById<TextView>(R.id.isDay)
+        val temperatureTextView = view.findViewById<TextView>(R.id.temperature)
+        val windSpeedTextView = view.findViewById<TextView>(R.id.windSpeed)
+        val windPowerTextView = view.findViewById<TextView>(R.id.windPower)
+        val isDayTextView = view.findViewById<TextView>(R.id.isDay)
+        val backgroundImage = view.findViewById<ImageView>(R.id.backgroundImage)
+        val cityNameTextView = view.findViewById<TextView>(R.id.cityNameTextView)
 
         val selectedCityName = PreferencesHelper.getSelectedCity(requireContext())
         if (selectedCityName == null) {
-            temperature.text = "Please select a city in settings."
+            temperatureTextView.text = "Please select a city in settings."
             return view
         }
 
+        cityNameTextView.text = selectedCityName
+
         val selectedCity = Cities.getCities().find { it.name == selectedCityName }
         if (selectedCity == null) {
-            temperature.text = "City not found."
+            temperatureTextView.text = "City not found."
             return view
         }
 
@@ -45,11 +51,30 @@ class MyCityFragment : Fragment() {
         // Fetch weather for the selected city
         viewModel.fetchWeather(selectedCity.latitude.toString(), selectedCity.longitude.toString())
             .observe(viewLifecycleOwner) { weather ->
-                temperature.text = "Temperature: ${weather.current.temperature}°C"
-                windSpeed.text = "Wind Speed: ${weather.current.windSpeed} km/h"
-                isDay.text = if (weather.current.isDay == 1) "Daytime" else "Nighttime"
+                val temp: Double = weather.current.temperature
+                temperatureTextView.text = "Temperature: $temp°C"
+                windSpeedTextView.text = "Wind Speed: ${weather.current.windSpeed} km/h"
+                isDayTextView.text = if (weather.current.isDay == 1) "Daytime" else "Nighttime"
+
+                // Update wind power
+                val windSpeed = weather.current.windSpeed
+                val windPower = when {
+                    windSpeed < 5 -> "Weak"
+                    (5 <= windSpeed && windSpeed <= 15) -> "Moderate"
+                    else -> "Strong"
+                }
+                windPowerTextView.text = "Wind Power: $windPower"
+
+                // Update the background image based on temperature
+                when {
+                    temp >= 15 -> backgroundImage.setImageResource(R.drawable.hot)
+                    (0 <= temp && temp <= 14) -> backgroundImage.setImageResource(R.drawable.warm)
+                    else -> backgroundImage.setImageResource(R.drawable.cold)
+                }
             }
+
 
         return view
     }
 }
+

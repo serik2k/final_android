@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">final android</string>
+    <string name="background_image">Dynamic background image for temperature</string>
 </resources>
