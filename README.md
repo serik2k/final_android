@@ -12,7 +12,7 @@ There will be 3 pages, where:
 
 ----------------------------------------------------------------------------------------------------------
 
-The API we will be using: (https://api.open-meteo.com/v1/forecast?latitude=52.52,51.0222,48.8534,51.5085,47.1167,50.2797,50.4267,59.9386,25.0772,52.5244,50.088,42.87,35.6895,39.9075&longitude=13.41,71.4669,2.3488,-0.1257,51.8833,57.2072,80.2667,30.3141,55.3093,13.4105,14.4208,74.59,139.6917,116.3972&current=temperature_2m,is_day,rain,wind_speed_10m&hourly=temperature_2m&timezone=GMT&forecast_hours=12)
+The API we will be using: [https://api.open-meteo.com](https://api.open-meteo.com/v1/forecast?latitude=52.52,51.0222,48.8534,51.5085,47.1167,50.2797,50.4267,59.9386,25.0772,52.5244,50.088,42.87,35.6895,39.9075&longitude=13.41,71.4669,2.3488,-0.1257,51.8833,57.2072,80.2667,30.3141,55.3093,13.4105,14.4208,74.59,139.6917,116.3972&current=temperature_2m,is_day,rain,wind_speed_10m&hourly=temperature_2m&timezone=GMT&forecast_hours=12)
 
 The information that we actually took: 
 1) Temperature
