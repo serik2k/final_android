@@ -27,23 +27,34 @@ class WeatherFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Set an empty adapter initially
         adapter = WeatherAdapter()
         recyclerView.adapter = adapter
 
-        Log.d("WeatherFragment", "RecyclerView setup complete")
-
-        val database = DatabaseProvider.getDatabase(requireContext());
+        val database = DatabaseProvider.getDatabase(requireContext())
 
         // Initialize the repository and ViewModel
         val repository = WeatherRepository(RetrofitInstance.api, database)
         val factory = WeatherViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(WeatherViewModel::class.java)
 
-        // Fetch the data
+        // **Fetch local weather first**
+        fetchLocalWeather()
+
+        // **Fetch new data from API**
         fetchWeatherForCities()
 
         return view
+    }
+
+    private fun fetchLocalWeather() {
+        viewModel.getLocalWeather().observe(viewLifecycleOwner) { localWeather ->
+            if (localWeather.isNotEmpty()) {
+                Log.d("WeatherFragment", "Loaded weather from database: $localWeather")
+                adapter.submitList(localWeather)
+            } else {
+                Log.d("WeatherFragment", "No local weather data found")
+            }
+        }
     }
 
 
@@ -61,40 +72,17 @@ class WeatherFragment : Fragment() {
                         longitude = city.longitude
                     )
 
-                    // Add to the list and submit the new list to the adapter
+                    // Add to the list and submit it
                     cityWeatherList.add(cityWeather)
                     adapter.submitList(cityWeatherList.toList()) // Submit a copy of the list
+
+                    // Save to local database
+                    if (cityWeatherList.size == cities.size) {
+                        Log.d("WeatherFragment", "Saving data to database: $cityWeatherList")
+                        viewModel.saveWeather(cityWeatherList)
+                    }
                 }
         }
     }
 
-//    private fun fetchWeatherForCities() {
-//        val cityWeatherList = mutableListOf<CityWeather>()
-//        val cities = Cities.getCities()
-//
-//        cities.forEach { city ->
-//            viewModel.fetchWeather(city.latitude.toString(), city.longitude.toString())
-//                .observe(viewLifecycleOwner) { weatherResponse ->
-//                    val cityWeather = CityWeather(
-//                        cityName = city.name,
-//                        temperature = "${weatherResponse.current.temperature}°C",
-//                        latitude = city.latitude,
-//                        longitude = city.longitude
-//                    )
-//
-//                    cityWeatherList.add(cityWeather)
-//
-//                    // Update adapter once all responses are fetched
-//                    if (cityWeatherList.size == cities.size) {
-//                        if (cityWeatherList.isNotEmpty()) {
-//                            adapter.updateWeather(cityWeatherList)
-//                        } else {
-//                            Log.e("WeatherFragment", "No data to update the adapter")
-//                        }
-//
-//                        Log.d("WeatherFragment", "All cities' weather fetched: $cityWeatherList")
-//                    }
-//                }
-//        }
-//    }
 }

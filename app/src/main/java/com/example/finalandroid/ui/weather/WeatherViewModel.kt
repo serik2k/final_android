@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.example.finalandroid.data.api.CityWeather
 import com.example.finalandroid.data.api.WeatherResponse
 import com.example.finalandroid.data.repository.WeatherRepository
 import kotlinx.coroutines.launch
@@ -29,5 +31,19 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
             }
         }
         return result
+    }
+
+    // **Fetch local weather from database**
+    fun getLocalWeather(): LiveData<List<CityWeather>> {
+        return liveData {
+            emit(repository.getLocalWeather())
+        }
+    }
+
+    // **Save weather to database**
+    fun saveWeather(cityWeather: List<CityWeather>) {
+        viewModelScope.launch {
+            repository.saveWeather(cityWeather)
+        }
     }
 }
