@@ -30,4 +30,12 @@
         android:layout_gravity="right"/>
 
     </FrameLayout>
+    <Spinner
+        android:id="@+id/citySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/grey"
+        android:spinnerMode="dropdown" />
+
 </LinearLayout>
